@@ -6,18 +6,22 @@ import { fileURLToPath } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
+// export default defineConfig({
+//   plugins: [
+//     react(),
+//     tailwindcss(),
+//   ],
+//   resolve: {
+//     alias: {
+//       '@': path.resolve(__dirname, 'src'),
+//     },
+//   },
+//   server: {
+//     port: 3000,
+//     host: true,
+//   },
+// })
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
-    },
-  },
-  server: {
-    port: 3000,
-    host: true,
-  },
+  plugins: [react()],
+  base: '/Portfolio/', // ⚠️ repo name
 })
