@@ -22,7 +22,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 //   },
 // })
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(),tailwindcss(),],
   base: '/Portfolio/',
   resolve: {
     alias: {
