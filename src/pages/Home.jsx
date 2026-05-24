@@ -299,8 +299,9 @@ export default function Home() {
 
   const handleResumeDownload = () => {
     const link = document.createElement('a')
-    link.href = 'Nikesh_Vishwakarma_Resume.pdf'
+    link.href = 'https://raw.githubusercontent.com/Nikesh441/Portfolio/main/Nikesh_Vishwakarma_Resume.pdf'
     link.download = 'Nikesh_Vishwakarma_Resume.pdf'
+    link.target = '_blank'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
