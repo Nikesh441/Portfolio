@@ -9,14 +9,24 @@ import { useToast } from '@/hooks/use-toast'
 import {
   ArrowRight, Download, Mail, Github, Linkedin, ExternalLink,
   Code2, Database, Globe, Cloud, Cpu, Wrench, ChevronRight,
-  CheckCircle2, Send, Star, Zap, Shield, BarChart3, Terminal
+  CheckCircle2, Send, Star, Zap, Shield, BarChart3, Terminal,CreditCard,Scale
 } from 'lucide-react'
 import {
   SiPython, SiDjango, SiFastapi, SiFlask, SiPhp,
   SiMysql, SiPostgresql, SiSelenium,
-  SiGooglecloud, SiGithubactions, SiWordpress, SiGit, SiClaude,SiGooglegemini
+  SiGooglecloud, SiGithubactions, SiWordpress, SiGit, SiClaude,SiGooglegemini,
+  SiGnubash, SiPowers, SiDocker
 } from 'react-icons/si'
-
+import { VscAzure } from 'react-icons/vsc'
+import { LuWorkflow } from 'react-icons/lu'
+import { FaServer } from 'react-icons/fa'
+import { CiMonitor } from "react-icons/ci";
+import {
+  FileText,
+  Bell,
+  Bug,
+} from "lucide-react";
+import { TbWorldSearch } from "react-icons/tb";
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } }
@@ -32,9 +42,84 @@ const scaleIn = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.45, ease: 'easeOut' } }
 }
 
+// const SKILLS = [
+//   {
+//     title: 'Backend Development',
+//     icon: <Code2 className="w-5 h-5" />,
+//     color: 'from-blue-500 to-indigo-600',
+//     borderColor: 'border-l-blue-500',
+//     bg: 'bg-blue-50 dark:bg-blue-950/30',
+//     items: [
+//       { name: 'Python', icon: <SiPython className="text-blue-500" /> },
+//       { name: 'Django', icon: <SiDjango className="text-green-700" /> },
+//       { name: 'FastAPI', icon: <SiFastapi className="text-teal-500" /> },
+//       { name: 'Flask', icon: <SiFlask className="text-gray-700 dark:text-gray-300" /> },
+      
+//     ]
+//   },
+//   {
+//     title: 'Databases',
+//     icon: <Database className="w-5 h-5" />,
+//     color: 'from-emerald-500 to-green-600',
+//     borderColor: 'border-l-emerald-500',
+//     bg: 'bg-emerald-50 dark:bg-emerald-950/30',
+//     items: [
+//       { name: 'MySQL', icon: <SiMysql className="text-orange-500" /> },
+//       { name: 'PostgreSQL', icon: <SiPostgresql className="text-blue-600" /> },
+//     ]
+//   },
+//   {
+//     title: 'Scraping & Automation',
+//     icon: <Globe className="w-5 h-5" />,
+//     color: 'from-orange-500 to-amber-600',
+//     borderColor: 'border-l-orange-500',
+//     bg: 'bg-orange-50 dark:bg-orange-950/30',
+//     items: [
+//       { name: 'Selenium', icon: <SiSelenium className="text-green-500" /> },
+//       { name: 'Beautiful Soup', icon: <span className="text-xs font-bold text-orange-500">BS</span> },
+//     ]
+//   },
+//   {
+//     title: 'Cloud & DevOps',
+//     icon: <Cloud className="w-5 h-5" />,
+//     color: 'from-violet-500 to-purple-600',
+//     borderColor: 'border-l-violet-500',
+//     bg: 'bg-violet-50 dark:bg-violet-950/30',
+//     items: [
+//       { name: 'Azure', icon: <VscAzure className="text-orange-400" /> },
+//       { name: 'Google Cloud', icon: <SiGooglecloud className="text-blue-500" /> },
+//       { name: 'GitHub Actions', icon: <SiGithubactions className="text-gray-800 dark:text-white" /> },
+//       { name: 'IIS Server', icon: <span className="text-xs font-bold text-blue-500">IIS</span> },
+//       { name: 'NSSM', icon: <span className="text-xs font-bold text-gray-500">NS</span> },
+//     ]
+//   },
+//   {
+//     title: 'CMS & Tools',
+//     icon: <Wrench className="w-5 h-5" />,
+//     color: 'from-pink-500 to-rose-600',
+//     borderColor: 'border-l-pink-500',
+//     bg: 'bg-pink-50 dark:bg-pink-950/30',
+//     items: [
+//       { name: 'WordPress', icon: <SiWordpress className="text-blue-700" /> },
+//       { name: 'Git', icon: <SiGit className="text-orange-600" /> },
+//       { name: 'Acronis', icon: <span className="text-xs font-bold text-red-500">AC</span> },
+//     ]
+//   },
+//   {
+//     title: 'AI Tools',
+//     icon: <Cpu className="w-5 h-5" />,
+//     color: 'from-cyan-500 to-sky-600',
+//     borderColor: 'border-l-cyan-500',
+//     bg: 'bg-cyan-50 dark:bg-cyan-950/30',
+//     items: [
+//       { name: 'Gemini AI', icon: <SiGooglegemini className="text-purple-500" /> },
+//       { name: 'claude AI', icon: <SiClaude className="text-orange-600" /> },
+//     ]
+//   },
+// ]
 const SKILLS = [
   {
-    title: 'Backend Development',
+    title: 'Programming & Backend',
     icon: <Code2 className="w-5 h-5" />,
     color: 'from-blue-500 to-indigo-600',
     borderColor: 'border-l-blue-500',
@@ -44,9 +129,37 @@ const SKILLS = [
       { name: 'Django', icon: <SiDjango className="text-green-700" /> },
       { name: 'FastAPI', icon: <SiFastapi className="text-teal-500" /> },
       { name: 'Flask', icon: <SiFlask className="text-gray-700 dark:text-gray-300" /> },
-      { name: 'PHP', icon: <SiPhp className="text-indigo-500" /> },
+      { name: 'Bash', icon: <SiGnubash className="text-gray-700 dark:text-white" /> },
+      { name: 'PowerShell', icon: <SiPowers className="text-blue-500" /> },
     ]
   },
+
+  {
+    title: 'DevOps & CI/CD',
+    icon: <LuWorkflow  className="w-5 h-5" />,
+    color: 'from-violet-500 to-purple-600',
+    borderColor: 'border-l-violet-500',
+    bg: 'bg-violet-50 dark:bg-violet-950/30',
+    items: [
+      { name: 'Azure DevOps', icon: <VscAzure className="text-blue-500" /> },
+      { name: 'GitHub Actions', icon: <SiGithubactions className="text-gray-800 dark:text-white" /> },
+      { name: 'Git', icon: <SiGit className="text-orange-600" /> },
+      { name: 'Docker', icon: <SiDocker className="text-blue-500" /> },
+    ]
+  },
+
+  {
+    title: 'Cloud Platforms',
+    icon: <Cloud className="w-5 h-5" />,
+    color: 'from-cyan-500 to-sky-600',
+    borderColor: 'border-l-cyan-500',
+    bg: 'bg-cyan-50 dark:bg-cyan-950/30',
+    items: [
+      { name: 'Microsoft Azure', icon: <VscAzure className="text-blue-500" /> },
+      { name: 'Google Cloud', icon: <SiGooglecloud className="text-blue-500" /> },
+    ]
+  },
+
   {
     title: 'Databases',
     icon: <Database className="w-5 h-5" />,
@@ -58,52 +171,43 @@ const SKILLS = [
       { name: 'PostgreSQL', icon: <SiPostgresql className="text-blue-600" /> },
     ]
   },
+
   {
-    title: 'Scraping & Automation',
-    icon: <Globe className="w-5 h-5" />,
+    title: 'Servers & Containerization',
+    icon: <FaServer  className="w-5 h-5" />,
     color: 'from-orange-500 to-amber-600',
     borderColor: 'border-l-orange-500',
     bg: 'bg-orange-50 dark:bg-orange-950/30',
     items: [
-      { name: 'Selenium', icon: <SiSelenium className="text-green-500" /> },
-      { name: 'Beautiful Soup', icon: <span className="text-xs font-bold text-orange-500">BS</span> },
-    ]
-  },
-  {
-    title: 'Cloud & DevOps',
-    icon: <Cloud className="w-5 h-5" />,
-    color: 'from-violet-500 to-purple-600',
-    borderColor: 'border-l-violet-500',
-    bg: 'bg-violet-50 dark:bg-violet-950/30',
-    items: [
-      { name: 'AWS', icon: <span className="text-xs font-bold text-orange-400">AWS</span> },
-      { name: 'Google Cloud', icon: <SiGooglecloud className="text-blue-500" /> },
-      { name: 'GitHub Actions', icon: <SiGithubactions className="text-gray-800 dark:text-white" /> },
+      { name: 'Docker', icon: <SiDocker className="text-blue-500" /> },
       { name: 'IIS Server', icon: <span className="text-xs font-bold text-blue-500">IIS</span> },
       { name: 'NSSM', icon: <span className="text-xs font-bold text-gray-500">NS</span> },
     ]
   },
+
   {
-    title: 'CMS & Tools',
-    icon: <Wrench className="w-5 h-5" />,
+    title: 'Monitoring & Automation',
+    icon: <CiMonitor  className="w-5 h-5" />,
     color: 'from-pink-500 to-rose-600',
     borderColor: 'border-l-pink-500',
     bg: 'bg-pink-50 dark:bg-pink-950/30',
     items: [
-      { name: 'WordPress', icon: <SiWordpress className="text-blue-700" /> },
-      { name: 'Git', icon: <SiGit className="text-orange-600" /> },
-      { name: 'Acronis', icon: <span className="text-xs font-bold text-red-500">AC</span> },
+      { name: 'Log Monitoring', icon: <FileText className="text-pink-500 w-4 h-4" /> },
+      { name: 'Custom Alerting', icon: <Bell className="text-red-500 w-4 h-4" /> },
+      { name: 'Error Tracking', icon: <Bug className="text-orange-500 w-4 h-4" /> },
+      { name: 'Acronis Data Protection', icon: <span className="text-xs font-bold text-red-500">AC</span> },
     ]
   },
+
   {
-    title: 'AI Tools',
-    icon: <Cpu className="w-5 h-5" />,
-    color: 'from-cyan-500 to-sky-600',
-    borderColor: 'border-l-cyan-500',
-    bg: 'bg-cyan-50 dark:bg-cyan-950/30',
+    title: 'Scraping & Utilities',
+    icon: <TbWorldSearch  className="w-5 h-5" />,
+    color: 'from-lime-500 to-green-600',
+    borderColor: 'border-l-lime-500',
+    bg: 'bg-lime-50 dark:bg-lime-950/30',
     items: [
-      { name: 'Gemini AI', icon: <SiGooglegemini className="text-purple-500" /> },
-      { name: 'claude AI', icon: <SiClaude className="text-orange-600" /> },
+      { name: 'Selenium', icon: <SiSelenium className="text-green-500" /> },
+      { name: 'Beautiful Soup', icon: <span className="text-xs font-bold text-orange-500">BS</span> },
     ]
   },
 ]
@@ -113,17 +217,17 @@ const PROJECTS = [
     num: '01',
     title: 'Dynamic Pricing & Plan Management',
     desc: 'Developed a backend module to manage SaaS pricing plans. Implemented logic for creating subscription plans, assigning feature limits, enforcing usage limits, and tracking subscription changes.',
-    tags: ['Python', 'Django', 'MySQL'],
+    tags: ['Python', 'Django','REST API', 'MySQL'],
     icon: <BarChart3 className="w-6 h-6" />,
     gradient: 'from-blue-500 to-indigo-600',
     glow: 'shadow-blue-500/20',
   },
   {
     num: '02',
-    title: 'SERP Web Scraping System',
-    desc: 'Built a scalable web scraping system that extracts search engine result page data. Implemented automation for collecting ranking data, URLs, and keyword insights.',
-    tags: ['Python', 'Selenium', 'Beautiful Soup'],
-    icon: <Globe className="w-6 h-6" />,
+    title: 'Scalable PDF Reporting System',
+    desc: 'Developed a dynamic PDF generation system using HTML templates, Pyppeteer, and embedded base64 assets to create scalable, production-ready reports with consistent styling and optimized rendering.',
+    tags: ['Python', 'Pyppeteer', 'HTML', 'PDF Automation'],
+    icon: <FileText className="w-6 h-6" />,
     gradient: 'from-emerald-500 to-teal-600',
     glow: 'shadow-emerald-500/20',
   },
@@ -131,48 +235,48 @@ const PROJECTS = [
     num: '03',
     title: 'Log Monitoring & Error Tracking',
     desc: 'Created a custom monitoring system that parses server logs, identifies failed jobs, detects errors, and sends alerts to maintain system stability.',
-    tags: ['Python', 'FastAPI', 'Logging'],
+    tags: ['Python', 'FastAPI', 'Django','Custom Logging'],
     icon: <Shield className="w-6 h-6" />,
     gradient: 'from-orange-500 to-rose-600',
     glow: 'shadow-orange-500/20',
   },
   {
     num: '04',
-    title: 'Analytics Integration System',
-    desc: 'Integrated Google Analytics (GA4) and Google Search Console APIs to fetch and analyze traffic metrics, keyword data, and performance insights.',
-    tags: ['Python', 'APIs', 'GA4'],
-    icon: <BarChart3 className="w-6 h-6" />,
+    title: 'Payment Integration System',
+    desc: 'Integrated Stripe payment workflows for subscriptions, checkout sessions, billing management, webhook handling, and secure transaction processing within web applications.',
+    tags: ['Python', 'Stripe API', 'Webhooks', 'Payments'],
+    icon: <CreditCard className="w-6 h-6" />,
     gradient: 'from-violet-500 to-purple-600',
     glow: 'shadow-violet-500/20',
   },
   {
-    num: '05',
-    title: 'Automated SEO Data Pipeline',
-    desc: 'Built backend pipelines to process SEO metrics, keyword tracking, and automated reporting for large-scale data analysis.',
-    tags: ['Python', 'Pipelines', 'Data Processing'],
-    icon: <Zap className="w-6 h-6" />,
-    gradient: 'from-pink-500 to-fuchsia-600',
-    glow: 'shadow-pink-500/20',
-  },
+  num: '05',
+  title: 'Lex Assist AI — Legal Document Assistant',
+  desc: 'Built a RAG-based AI legal assistant supporting PDF upload and semantic search using local LLMs, pgvector embeddings, and a FastAPI streaming backend with a React real-time chat frontend; deployed on Azure with Docker and CI/CD pipelines.',
+  tags: ['Python', 'FastAPI', 'React', 'PostgreSQL', 'pgvector', 'Docker', 'Azure DevOps', 'RAG', 'Ollama'],
+  icon: <Scale className="w-6 h-6" />,
+  gradient: 'from-violet-500 to-purple-600',
+  glow: 'shadow-violet-500/20',
+},
 ]
 
 const EXPERIENCE = [
   {
-    company: 'Infigrowth',
-    location: 'Goregaon, Mumbai',
-    role: 'Software Development Engineer — Backend',
-    period: 'Oct 2023 – Present',
-    current: true,
-    color: 'from-indigo-500 to-violet-600',
-    dotColor: 'bg-indigo-500',
-    points: [
-      'Stripe Payment Gateway Integration: Implemented secure subscription billing in a Django application using Stripe Checkout, Billing APIs, and webhook handlers for payment processing, plan management, and lifecycle events.',
-      'Automated GA4 & GSC Data Retrieval System: Built a POC and later a full production solution to automatically fetch, process, and integrate GA4 and GSC data into internal reporting systems using Google APIs.',
-      'Keyword Research Tool: Built and deployed a FastAPI-based application on IIS to fetch real-time keyword data, providing search volumes and new keyword ideas through efficient search and discovery functionality.',
-      'Deployed and configured Django applications on Windows Server 2022, including IIS setup, SSL configuration, and environment management.',
-      'Created reusable utility modules and internal libraries to standardize API communication, logging, and error handling.',
-    ],
-  },
+  company: 'Infigrowth',
+  location: 'Goregaon, Mumbai',
+  role: 'Software Development Engineer — Backend',
+  period: 'Oct 2023 – Present',
+  current: true,
+  color: 'from-indigo-500 to-violet-600',
+  dotColor: 'bg-indigo-500',
+  points: [
+    'Engineered end-to-end Stripe Payment Gateway integration (Checkout, Billing APIs, webhooks) within a Django application, enabling recurring subscription billing and automated lifecycle event handling reducing manual payment processing effort by 30%.',
+    'Designed and delivered an automated GA4 & Google Search Console data retrieval system, progressing from POC to full production deployment; consolidated multi-source reporting and reduced manual data extraction and report generation time by 60%.',
+    'Built and deployed a FastAPI-based keyword research application on IIS delivering real-time search volume data and keyword discovery, reducing manual data collection from external sources by 50%.',
+    'Deployed and configured 5+ Django applications on Windows Server 2022, including full IIS setup, SSL/TLS certificate configuration, and environment management achieving 99%+ application uptime post-deployment.',
+    'Developed reusable internal utility libraries standardizing API communication, structured logging, and error handling across 5+ microservices, cutting cross-team integration time by 40%.',
+  ],
+},
   {
     company: 'Infidigit',
     location: 'Goregaon, Mumbai',
@@ -194,7 +298,15 @@ export default function Home() {
   const { toast } = useToast()
 
   const handleResumeDownload = () => {
+    const link = document.createElement('a')
+    link.href = 'Nikesh_Vishwakarma_Resume.pdf'
+    link.download = 'Nikesh_Vishwakarma_Resume.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+
     toast({
+      duration: 500,
       title: 'Downloading Resume',
       description: 'Nikesh_Vishwakarma_Resume.pdf is being prepared.',
       icon: <CheckCircle2 className="w-4 h-4 text-emerald-500" />
@@ -297,16 +409,16 @@ export default function Home() {
               {/* Socials */}
               <motion.div variants={fadeUp} className="flex items-center gap-3 pt-2">
                 <span className="text-sm text-muted-foreground font-mono">find me on:</span>
-                <a
+                {/* <a
                   href="https://github.com"
                   target="_blank"
                   rel="noreferrer"
                   className="w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 hover:shadow-md transition-all"
                 >
                   <Github className="w-5 h-5" />
-                </a>
+                </a> */}
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/nikesh-vishwkarma"
                   target="_blank"
                   rel="noreferrer"
                   className="w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-[#0077b5] hover:border-[#0077b5]/50 hover:shadow-md transition-all"
@@ -314,7 +426,7 @@ export default function Home() {
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a
-                  href="mailto:nikesh.vishwakarma@email.com"
+                  href="mailto:nikeshv441@gmail.com"
                   className="w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 hover:shadow-md transition-all"
                 >
                   <Mail className="w-5 h-5" />
@@ -429,26 +541,32 @@ export default function Home() {
 
               <motion.div variants={fadeUp} className="space-y-4 text-muted-foreground text-lg leading-relaxed">
                 <p>
-                  I'm a passionate backend developer with strong experience in Python frameworks including{' '}
-                  <strong className="text-foreground">Django, FastAPI, and Flask</strong>. I specialize in building scalable,
-                  high-performance backend systems that power real-world SaaS products.
+                  Passionate backend developer with 3+ years of experience building scalable,
+                  high-performance systems that power real-world SaaS products using Python
+                  frameworks including{' '}<strong className="text-foreground">Django, FastAPI, and Flask </strong>.
                 </p>
+
                 <p>
-                  With hands-on experience in search engine data scraping, Google Analytics and Search Console
-                  API integrations, automation tools, and DevOps deployment, I focus on creating clean,
-                  maintainable architectures that solve complex business problems.
+                  Specialized in search engine data pipelines, Google Analytics and Search
+                  Console API integrations, and automation tooling delivering clean,
+                  maintainable architectures that solve complex business problems. 
+                  Hands-on with DevOps workflows using{' '} <strong className="text-foreground">Azure DevOps</strong> for CI/CD
+                  pipeline setup, environment configuration, and release management across
+                  Windows Server and cloud environments.
                 </p>
+
                 <p>
-                  My expertise spans <strong className="text-foreground">scalable backend architecture, data pipelines,
-                  automation systems, log monitoring</strong>, and cloud deployment on AWS and Google Cloud.
+                  Core expertise spans{' '}<strong className="text-foreground">
+                    scalable backend architecture, data pipelines, automation systems, log
+                    monitoring </strong>, and cloud deployment on <strong className="text-foreground"> Azure Cloud and IIS Servers.</strong>
                 </p>
               </motion.div>
 
               {/* Stats */}
               <motion.div variants={fadeUp} className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
                 {[
-                  { value: '2+', label: 'Years Exp' },
-                  { value: '5+', label: 'Projects' },
+                  { value: '3+', label: 'Years Exp' },
+                  { value: '10+', label: 'Projects' },
                   { value: '1M+', label: 'Rows Scraped' },
                 ].map(stat => (
                   <div key={stat.label} className="text-center p-4 rounded-xl bg-card border border-border">
@@ -460,7 +578,7 @@ export default function Home() {
 
               {/* Quick chips */}
               <motion.div variants={fadeUp} className="flex flex-wrap gap-2 pt-2">
-                {['Django', 'FastAPI', 'PostgreSQL', 'AWS', 'Web Scraping', 'CI/CD'].map(chip => (
+                {['Django', 'FastAPI', 'PostgreSQL', 'Azure Cloud', 'Web Scraping', 'CI/CD'].map(chip => (
                   <span
                     key={chip}
                     className="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-medium border border-primary/20"
@@ -737,39 +855,39 @@ export default function Home() {
       </section>
 
       {/* ── CONTACT ── */}
-      <section id="contact" className="py-28 bg-muted/30">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+      {/* <section id="contact" className="py-28 bg-muted/30"> */}
+        {/* <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"> */}
+          {/* <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
             className="text-center mb-16"
-          >
-            <p className="text-sm font-mono text-primary font-medium uppercase tracking-wider mb-3">Say Hello</p>
+          > */}
+            {/* <p className="text-sm font-mono text-primary font-medium uppercase tracking-wider mb-3">Say Hello</p>
             <h2 className="text-4xl sm:text-5xl font-extrabold">
               Get In <span className="gradient-text">Touch</span>
             </h2>
             <p className="mt-4 text-muted-foreground text-lg">
               Currently open for new opportunities. Let's connect!
             </p>
-          </motion.div>
+          </motion.div> */}
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+          {/* <div className="grid grid-cols-1 lg:grid-cols-5 gap-10"> */}
             {/* Contact info */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, x: -28 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="lg:col-span-2 flex flex-col gap-4"
-            >
-              {[
+            > */}
+              {/* {[
                 {
                   icon: <Mail className="w-5 h-5" />,
                   label: 'Email',
-                  value: 'nikesh.vishwakarma@email.com',
-                  href: 'mailto:nikesh.vishwakarma@email.com',
+                  value: 'nikeshv441@gmail.com',
+                  href: 'mailto:nikeshv441@gmail.com',
                   color: 'bg-primary',
                 },
                 {
@@ -785,8 +903,8 @@ export default function Home() {
                   value: 'View my repositories',
                   href: 'https://github.com',
                   color: 'bg-gray-800 dark:bg-gray-200',
-                },
-              ].map(item => (
+                }, */}
+              {/* ].map(item => (
                 <a
                   key={item.label}
                   href={item.href}
@@ -801,22 +919,22 @@ export default function Home() {
                     <p className="text-xs font-mono text-muted-foreground">{item.label}</p>
                     <p className="font-semibold text-foreground group-hover:text-primary transition-colors text-sm">
                       {item.value}
-                    </p>
-                  </div>
-                  <ExternalLink className="w-4 h-4 text-muted-foreground ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </p> */}
+                  {/* </div> */}
+                  {/* <ExternalLink className="w-4 h-4 text-muted-foreground ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               ))}
-            </motion.div>
+            </motion.div> */}
 
             {/* Contact form */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, x: 28 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.15 }}
               className="lg:col-span-3"
-            >
-              <form
+            > */}
+              {/* <form
                 onSubmit={handleContactSubmit}
                 className="bg-card border border-border rounded-2xl p-8 shadow-sm flex flex-col gap-5"
               >
@@ -850,11 +968,83 @@ export default function Home() {
                 >
                   <Send className="mr-2 w-4 h-4" /> Send Message
                 </Button>
-              </form>
-            </motion.div>
+              </form> */}
+            {/* </motion.div>
           </div>
         </div>
-      </section>
+      </section> */}
+
+      {/* ── CONTACT ── */}
+      <section id="contact" className="py-28 bg-muted/30">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-center mb-16"
+          >
+            <p className="text-sm font-mono text-primary font-medium uppercase tracking-wider mb-3">Say Hello</p>
+            <h2 className="text-4xl sm:text-5xl font-extrabold">
+              Get In <span className="gradient-text">Touch</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground text-lg">
+              Currently open for new opportunities. Let's connect!
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto"
+          >
+            {[
+              {
+                icon: <Mail className="w-5 h-5" />,
+                label: 'Email',
+                value: 'nikeshv441@gmail.com',
+                href: 'mailto:nikeshv441@gmail.com',
+                color: 'bg-primary',
+              },
+              {
+                icon: <Linkedin className="w-5 h-5" />,
+                label: 'LinkedIn',
+                value: 'Connect on LinkedIn',
+                href: 'https://www.linkedin.com/in/nikesh-vishwkarma',
+                color: 'bg-[#0077b5]',
+              },
+              {
+                icon: <Github className="w-5 h-5" />,
+                label: 'GitHub',
+                value: 'View my repositories',
+                href: 'https://github.com',
+                color: 'bg-gray-800 dark:bg-gray-200',
+              },
+            ].map(item => (
+              <a
+                key={item.label}
+                href={item.href}
+                target={item.href.startsWith('http') ? '_blank' : undefined}
+                rel="noreferrer"
+                className="card-lift flex items-center gap-4 p-5 bg-card border border-border rounded-2xl hover:border-primary/50 hover:shadow-md group transition-all"
+              >
+                <div className={`w-12 h-12 rounded-xl ${item.color} flex items-center justify-center text-white flex-shrink-0`}>
+                  {item.icon}
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-mono text-muted-foreground">{item.label}</p>
+                  <p className="font-semibold text-foreground group-hover:text-primary transition-colors text-sm truncate">
+                    {item.value}
+                  </p>
+                </div>
+                <ExternalLink className="w-4 h-4 text-muted-foreground ml-auto flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </a>
+            ))}
+            </motion.div>
+          </div>
+        </section>
 
       {/* ── FOOTER ── */}
       <footer className="bg-card border-t border-border py-10">
