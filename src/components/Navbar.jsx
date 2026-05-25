@@ -33,7 +33,7 @@ export function Navbar() {
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-background/80 glass-card border-b border-border shadow-sm'
+          ? 'bg-background/80 glass-card border-b border-border shadow-sm backdrop-blur-sm'
           : 'bg-transparent'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

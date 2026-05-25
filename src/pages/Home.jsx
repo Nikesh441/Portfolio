@@ -464,7 +464,7 @@ export default function Home() {
                       <div className="pl-4">
                         <p><span className="text-[#79c0ff]">self</span><span className="text-white">.name = </span><span className="text-[#a5d6ff]">"Nikesh Vishwakarma"</span></p>
                         <p><span className="text-[#79c0ff]">self</span><span className="text-white">.role = </span><span className="text-[#a5d6ff]">"Backend Engineer"</span></p>
-                        <p><span className="text-[#79c0ff]">self</span><span className="text-white">.stack = [</span><span className="text-[#a5d6ff]">"Django"</span><span className="text-white">, </span><span className="text-[#a5d6ff]">"FastAPI"</span><span className="text-white">, </span><span className="text-[#a5d6ff]">"AWS"</span><span className="text-white">]</span></p>
+                        <p><span className="text-[#79c0ff]">self</span><span className="text-white">.stack = [</span><span className="text-[#a5d6ff]">"Django"</span><span className="text-white">, </span><span className="text-[#a5d6ff]">"FastAPI"</span><span className="text-white">, </span><span className="text-[#a5d6ff]">"Azure"</span><span className="text-white">]</span></p>
                         <p><span className="text-[#79c0ff]">self</span><span className="text-white">.coffee = </span><span className="text-[#79c0ff]">float</span><span className="text-white">(</span><span className="text-[#a5d6ff]">"inf"</span><span className="text-white">)</span></p>
                       </div>
                     </div>
